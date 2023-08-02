@@ -12,7 +12,7 @@ export const weatherService = {
 const STORAGE_KEY = 'cities'
 const STORAGE_KEY_FAVORITES = 'favorite'
 const STORAGE_KEY_WEATHER_TYPE = 'weatherType'
-const API_KEY = 'nhBv0i9fPyKsWWxSXTS0xFx1mNQZZ3jQ';
+const API_KEY = 'pdw7pKEq08fLLvW4vGvE4uWyVZejz5CT';
 const gCities = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
 
 async function query(selectedCity, location = 'tel aviv') {
