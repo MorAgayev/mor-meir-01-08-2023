@@ -50,7 +50,7 @@ async function query(selectedCity, location = 'tel aviv') {
 
 async function loadCurrentWeather(code) {
     try {
-        const { data } = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${code}?apikey=${API_KEY}&details=true`)
+        const { data } = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${code}?apikey=${API_KEY}&details=true`)
         return { celsius:data[0].ApparentTemperature.Metric, fahrenheit:data[0].ApparentTemperature.Imperial, description: data[0].WeatherText }
     } catch (error) {
         throw error || 'Failed Loading Current Weather'
@@ -60,8 +60,8 @@ async function loadCurrentWeather(code) {
 async function loadDailyForecasts(code) {
     try {
         const data = await axios.all([
-            axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${code}?apikey=${API_KEY}&details=true&metric=true`),
-            axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${code}?apikey=${API_KEY}&details=true&metric=false`)
+            axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${code}?apikey=${API_KEY}&details=true&metric=true`),
+            axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${code}?apikey=${API_KEY}&details=true&metric=false`)
         ])
 
         const celsiusData = data[0].data.DailyForecasts
@@ -79,7 +79,7 @@ async function loadDailyForecasts(code) {
 
 async function getCities(value = 't') {
     try {
-        const { data } = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${value}`)
+        const { data } = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${value}`)
         return data
     } 
     catch (error) {
