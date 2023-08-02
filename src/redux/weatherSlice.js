@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCityAsync, getFavoritesAsync, toggleFavoriteAsync } from "./weatherActions";
-// import { getCityAsync, getFavoritesAsync, addCityAsync, deleteCityAsync } from "./weatherActions";
+import { getCityAsync, getFavoritesAsync, toggleFavoriteAsync, setWeatherType } from "./weatherActions";
 
 const weatherSlice = createSlice({
     name: 'weather',
     initialState: {
         city: null,
         favorites: null,
+        weatherType: 'fahrenheit',
         error: null
     },
     extraReducers: {
@@ -18,6 +18,9 @@ const weatherSlice = createSlice({
         },
         [getFavoritesAsync.fulfilled]: (state, action) => {
             state.favorites = action.payload.favorites
+        },
+        [setWeatherType.fulfilled]: (state, action) => {
+            state.weatherType = action.payload.weatherType
         }
     }
 })

@@ -6,6 +6,7 @@
     justify-content: space-between;
 
     .nav-container {
+        z-index: 9;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -19,6 +20,7 @@
             height: 100%;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 1rem;
 
             a {
@@ -53,7 +55,17 @@
             cursor: pointer;
         }
     }
+
+    @media screen and (max-width: 360px) {
+        .select_temp_type {
+            position: absolute;
+            top: $header-height;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
 }
+
 .light__theme {
     .nav-container {
         .mobile {

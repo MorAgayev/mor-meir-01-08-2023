@@ -7,7 +7,6 @@ export const getCityAsync = createAsyncThunk('weather/getCityAsync',
             const city = await weatherService.query(selectedCity, name)
             return { city }        
         } catch (error) {
-            console.log('error',error);
             throw error?.message || 'There are no cities to display'
         }
 })
@@ -18,7 +17,6 @@ export const getFavoritesAsync = createAsyncThunk('weather/getFavoritesAsync',
             const favorites = await weatherService.getFavorites()
             return { favorites }        
         } catch (error) {
-            console.log('error',error);
             throw error?.message || 'There are no favorites cities to display'
         }
 })
@@ -29,7 +27,16 @@ export const toggleFavoriteAsync = createAsyncThunk('weather/toggleFavoriteAsync
             const favorites = await weatherService.toggleFavorite(payload)
             return { favorites }        
         } catch (error) {
-            console.log('error',error);
             throw error?.message || 'Failed Toggle Favorite'
         }
+})
+
+export const setWeatherType = createAsyncThunk('weather/setWeatherType',
+async (payload) => {
+    try {
+        const weatherType = await weatherService.setWeatherType(payload)
+        return { weatherType }        
+    } catch (error) {
+        throw error?.message || 'Failed Change Weather Type'
+    }
 })

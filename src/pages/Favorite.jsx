@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getFavoritesAsync } from "../redux/weatherActions"
+import { getFavoritesAsync, toggleFavoriteAsync } from "../redux/weatherActions"
 import { CiCircleRemove } from 'react-icons/ci'
 import { IconContext } from "react-icons"
 import { MainModal } from "../components/common/MainModal"
 
 export function Favorite() {
     const [error, setError] = useState(null)
-    const { favorites } = useSelector((state)=> state.weather)
+    const { favorites, weatherType } = useSelector((state)=> state.weather)
     const dispatch = useDispatch()
 
     const loadData = async () => {
@@ -28,6 +28,10 @@ export function Favorite() {
         loadData()
     }
 
+    const handleRemoveFavorite = (favorite) => {
+        dispatch(toggleFavoriteAsync(favorite))
+    }
+
     if (error) {
         return (
             <div className="error__container">
@@ -45,13 +49,13 @@ export function Favorite() {
             <div className="favorite_cards">
                 {favorites?.length && favorites.map(favorite => {
                     return <div key={favorite.Key} className="favorite_card">
-                        <div className="remove-container">
+                        <div className="remove-container" onClick={()=>handleRemoveFavorite(favorite)}>
                             <IconContext.Provider value={{size: '20px'}}>
                                 <CiCircleRemove />
                             </IconContext.Provider>
                         </div>
                         <h2>{favorite.LocalizedName}</h2>
-                        <h1>{favorite.celsius.Value}</h1>
+                        <h1>{favorite[weatherType].Value} <span>{weatherType.charAt(0).toUpperCase()}</span></h1>
                         <span>{favorite.description}</span>
                     </div>
                     })

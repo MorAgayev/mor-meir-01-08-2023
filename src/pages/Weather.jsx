@@ -12,7 +12,7 @@ export function Weather() {
     const [error, setError] = useState(null)
     const [selectedCity, setSelectedCity] = useState(null)
     const dispatch = useDispatch()
-    const { city } = useSelector((state)=> state.weather)
+    const { city, weatherType } = useSelector((state)=> state.weather)
 
     useEffect(()=> {
         loadCity()
@@ -75,12 +75,12 @@ export function Weather() {
                 <SearchField search={handleSearch} options={options} select={handleSelect} value={selectedCity?.LocalizedName || ''}/>
                 {city && <div className="top_content">
                     <h2 className="location_title">{city.LocalizedName}</h2>
-                    <h1 className="temp">{city.celsius.Value}</h1>
+                    <h1 className="temp">{city[weatherType].Value} <span>{weatherType?.charAt(0).toUpperCase() || ''}</span></h1>
                     <small className="temp_desc">{city.description}</small>
                 </div>}
                 <div className="weekly-forecast">
                     {city && city.dailyForecasts.map((forecast)=> {
-                        return <ForecastCard key={forecast.Date} title={getDayFromDate(forecast.Date)} temp={getAvg([forecast.Temperature.Maximum.Value, forecast.Temperature.Minimum.Value])}/>
+                        return <ForecastCard key={forecast.Date} title={getDayFromDate(forecast.Date)} temp={getAvg([forecast[weatherType].Maximum.Value, forecast[weatherType].Minimum.Value])}/>
                     })}
                 </div>
             </div>

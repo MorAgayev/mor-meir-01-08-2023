@@ -4,11 +4,14 @@ export const weatherService = {
   query,
   getCities,
   toggleFavorite,
-  getFavorites
+  getFavorites,
+  setWeatherType,
+  getWeatherType
 }
 
 const STORAGE_KEY = 'cities'
 const STORAGE_KEY_FAVORITES = 'favorite'
+const STORAGE_KEY_WEATHER_TYPE = 'weatherType'
 const API_KEY = 'nhBv0i9fPyKsWWxSXTS0xFx1mNQZZ3jQ';
 const gCities = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
 
@@ -32,7 +35,7 @@ async function query(selectedCity, location = 'tel aviv') {
         const currentWeather = await loadCurrentWeather(city.Key)
     
         const dailyForecasts = await loadDailyForecasts(city.Key)
-    
+
         city = {...city, ...currentWeather, ...dailyForecasts}
     
         gCities.push(city)
@@ -56,8 +59,19 @@ async function loadCurrentWeather(code) {
 
 async function loadDailyForecasts(code) {
     try {
-        const {data} = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${code}?apikey=${API_KEY}&details=true&metric=true`)
-        return { dailyForecasts: data.DailyForecasts }
+        const data = await axios.all([
+            axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${code}?apikey=${API_KEY}&details=true&metric=true`),
+            axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${code}?apikey=${API_KEY}&details=true&metric=false`)
+        ])
+
+        const celsiusData = data[0].data.DailyForecasts
+        const fahrenheitData = data[1].data.DailyForecasts
+
+        const forecast = celsiusData.map((celsiusData, idx) => {
+            return { Date: celsiusData.Date, celsius: celsiusData.Temperature, fahrenheit: fahrenheitData[idx].Temperature}
+        })
+
+        return { dailyForecasts: forecast}
     } catch (error) {
         throw error || 'Failed Loading Daily Forecasts'
     }
@@ -69,7 +83,6 @@ async function getCities(value = 't') {
         return data
     } 
     catch (error) {
-        console.log('error service' ,error);
         throw error || 'Failed Loading Cities'
     }
 }
@@ -92,12 +105,17 @@ async function toggleFavorite(selectedCity) {
 
     localStorage.setItem(STORAGE_KEY_FAVORITES, JSON.stringify(favorites))
     return favorites
-    // const idx = gCities.findIndex(city=> city.Key === key)
-    // gCities[idx] = {...gCities[idx], isFavorite: !gCities[idx].isFavorite}
-    // localStorage.setItem(STORAGE_KEY, JSON.stringify(gCities))
-    // return gCities[idx]
 }
 
 async function getFavorites() {
     return JSON.parse(localStorage.getItem(STORAGE_KEY_FAVORITES))
+}
+
+async function setWeatherType(type) {
+    localStorage.setItem(STORAGE_KEY_WEATHER_TYPE, JSON.stringify(type))
+    return type
+}
+
+async function getWeatherType() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY_WEATHER_TYPE))
 }

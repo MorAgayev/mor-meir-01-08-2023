@@ -6,7 +6,9 @@ import { MdOutlineCancel } from 'react-icons/md'
 import { useEffect, useState } from "react";
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { useSelector, useDispatch } from "react-redux";
-import { toggleFavoriteAsync } from "../redux/weatherActions";
+import { setWeatherType, toggleFavoriteAsync } from "../redux/weatherActions";
+import SelectField from "./common/SelectField";
+import { WEATHER_TYPES } from "../assets/consts";
 
 export function AppHeader() {
     const [isLightTheme, setIsLightTheme] = useState(false)
@@ -14,7 +16,7 @@ export function AppHeader() {
     const [isShowNav, setIsShowNav] = useState(true)
     const location = useLocation();
     const dispatch = useDispatch()
-    const { city, favorites } = useSelector((state)=> state.weather)
+    const { city, favorites, weatherType } = useSelector((state)=> state.weather)
 
     
     useEffect(() => {
@@ -38,6 +40,10 @@ export function AppHeader() {
 
     const handleToggleFavorite = () => {
         dispatch(toggleFavoriteAsync(city))
+    }
+
+    const handleChangeWeatherType = (value) => {
+        dispatch(setWeatherType(value))
     }
 
     const isFavorite = () => {
@@ -77,6 +83,9 @@ export function AppHeader() {
                 </div>
                 <div className="color-mode-container" onClick={handleThemeChange}>
                     {isLightTheme ? <BsMoon/> : <BsFillMoonFill/>}
+                </div>
+                <div className="select_temp_type">
+                    <SelectField defaultValue={weatherType} options={WEATHER_TYPES} select={handleChangeWeatherType}/>
                 </div>
             </div>
         </div>

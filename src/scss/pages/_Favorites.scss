@@ -27,6 +27,12 @@
 
             h1 {
                 font-size: $h1-font-size;
+                position: relative;
+                span {
+                  position: absolute;
+                  top: 0;
+                  right: -15px;
+                }
             }
             h2 {
                 font-size: $h3-font-size;
@@ -39,7 +45,10 @@
                 position: absolute;
                 top: 10px;
                 left: 10px;
-                visibility: hidden;
+                
+                @media (hover: hover) { 
+                  visibility: hidden;
+                }
             }
 
             &:hover {
@@ -58,10 +67,11 @@
         }
         @media only screen and (max-width: 700px) {
           .favorite_card {
-            grid-column-end: span 12;
+            grid-column-end: span 10;
           }
         }
     }
+
     @media only screen and (max-width: 500px) {
       .favorite_card {
         grid-column: 2 / span 6;
@@ -71,8 +81,15 @@
           grid-column-end: span 6;
         }
       }
-    }
+    }  
+}
 
-      
-      
+.light__theme {
+  .favorites-container {
+    .favorite_cards {
+      .favorite_card {
+        background-color: $light-theme-container-color;
+      }
+    }
+  }
 }
