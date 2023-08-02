@@ -1,0 +1,33 @@
+.main__modal {
+    overflow-y: hidden !important;
+    position: fixed;
+    inset: 0;
+    background-color: hsla($second-hue, 28%, 16%, .7);
+    padding: 2rem 1rem;
+    display: grid;
+    place-items: center;
+    transition: .4s;
+    z-index: $z-modal;
+
+    .main__modal-content {
+        overflow-y: auto;
+        position: relative;
+        background-color: $body-color;
+        padding: 4.5rem 1.5rem 2.5rem;
+        border-radius: 1.5rem;
+        max-height: 100%;
+        max-width: 920px;
+        min-width: 50%;
+        min-height: 50%;
+    }
+
+    .main__modal-close {
+        cursor: pointer;
+        position: absolute;
+        top: 2.15rem;
+
+        .main__modal-close-icon {
+            font-size: 1.5rem;
+        }
+    }
+}

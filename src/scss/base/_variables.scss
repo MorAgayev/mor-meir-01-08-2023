@@ -1,0 +1,59 @@
+$header-height: 3.5rem;
+$first-hue: 210;
+$second-hue: 219;
+$sat: 66%;
+$lig: 75%;
+$first-color: hsl($first-hue,$sat, $lig);
+$first-color-alt: hsl($first-hue, $sat, 71%);
+$title-color: hsl($second-hue, 15%, 95%);
+$text-color: hsl($second-hue, 8%, 75%);
+$text-color-light: hsl($second-hue, 4%, 55%);
+$body-color: hsl($second-hue, 48%, 8%);
+$container-color: hsl($second-hue, 32%, 12%);
+
+//FONT AND TYPOGRAPHY
+$body-font: 'Poppins', sans-serif;
+$biggest-font-size: 1.75rem;
+$h1-font-size: 1.5rem;
+$h2-font-size: 1.25rem;
+$h3-font-size: 1rem;
+$normal-font-size: .938rem;
+$small-font-size: .813rem;
+$smaller-font-size: .75rem;
+$tiny-font-size: .625rem;
+
+//FONT WEIGHT 
+$font-medium: 500;
+$font-semibold: 600;
+
+// Z INDEX
+$z-tooltip: 10;
+$z-fixed: 100;
+$z-modal: 1000;
+
+
+// Responsive typography
+@media screen and (min-width: 968px) {
+    $biggest-font-size: 2.5rem;
+    $h1-font-size: 2.25rem;
+    $h2-font-size: 1.5rem;
+    $h3-font-size: 1.25rem;
+    $normal-font-size: 1rem;
+    $small-font-size: .875rem;
+    $smaller-font-size: .813rem;
+}
+
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+        Purple: hsl(250, 66%, 75%)
+        Blue: hsl(207, 90%, 72%)
+        Pink: hsl(356, 66%, 75%)
+        Teal: hsl(174, 63%, 62%)
+  */
+  // LIGHT THEME
+  $light-theme-title-color: hsl($second-hue, 15%, 15%);
+  $light-theme-text-color: hsl($second-hue, 8%, 35%);
+  $light-theme-body-color: hsl($second-hue, 100%, 99%);
+  $light-theme-container-color:#fff;

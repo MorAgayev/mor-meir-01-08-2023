@@ -1,0 +1,104 @@
+.container {
+    max-width: 968px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section {
+        padding: 6.5rem 0 1rem;
+    }
+
+    .section__title {
+        margin-bottom: 3.5rem;
+    }
+
+    .nav {
+        height: calc($header-height + 1rem);
+    }
+}
+  
+.grid {
+    display: grid;
+    gap: 1.25rem;
+}
+  
+.main {
+    overflow: hidden;
+}
+  
+.section {
+    padding: 4.5rem 0 1rem;
+}
+  
+.section__title, 
+.section__subtitle {
+    text-align: center;
+}
+  
+.section__title {
+    font-size: $h2-font-size;
+    color: $first-color;
+    margin-bottom: 2rem;
+}
+  
+.section__subtitle {
+    display: block;
+    font-size: $smaller-font-size;
+    color: $text-color-light;
+}
+
+
+
+// BUTTONS 
+
+.button {
+    display: inline-block;
+    background-color: $first-color;
+    color: $body-color;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    font-weight: $font-medium;
+    transition: .4s;
+
+    &:hover {
+        background-color: $first-color-alt;
+        color: $body-color
+    }
+}
+
+.light__theme {
+    .button {
+        color: $light-theme-body-color;
+        
+        &:hover {
+            color: $light-theme-body-color
+        }
+    }
+}
+
+.button--ghost {
+    background-color: transparent;
+    border: 2px solid $first-color;
+    color: $first-color;
+}
+
+
+// horizontal line
+.horizontal__line {
+    height: 1px;
+    width: 100%;
+    background-color: $text-color;
+    filter: brightness(.7);
+}
+
+.light__theme {
+    .horizontal__line {
+        background-color: $light-theme-text-color;
+    }
+}

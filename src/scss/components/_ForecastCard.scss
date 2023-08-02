@@ -1,0 +1,32 @@
+.forecast-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: $container-color;
+    font-weight: normal;
+    font-size: $normal-font-size;
+    width: 100%;
+    padding: .5rem 1rem;
+
+    &:nth-child(1n):not(:last-child){
+        border-bottom: .3px solid $first-color;
+    }
+}
+
+.light__theme {
+    .forecast-card-container {
+        background-color: $light-theme-container-color;
+    }
+}
+
+@media screen and (min-width: 580px) {
+    .forecast-card-container {
+        flex-direction: column;
+        
+        &:nth-child(1n):not(:last-child){
+            border-bottom: none;
+            border-inline-end: .3px solid $first-color;
+        }
+    }
+}

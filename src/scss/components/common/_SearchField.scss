@@ -1,0 +1,77 @@
+.search-field-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input {
+        outline: none;
+        border: none;
+        border-radius: 3rem;
+        box-shadow: 0px 0px 4px 0px $first-color;
+        padding: .7rem 1.2rem;
+        width: 100%;
+        max-width: 400px;
+        color: $body-color;
+        
+        &::placeholder {
+            color: $body-color;
+        }
+    }
+}
+
+.light__theme {
+    .search-field-container {
+        input {
+            color: $light-theme-body-color;
+            background-color: $first-color;
+            &::placeholder {
+                color: $light-theme-body-color;
+            }
+        }
+    }
+}
+
+.MuiAutocomplete-root {
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .MuiFormControl-root {
+        width: 100%;
+        max-width: 400px;
+        background-color: $title-color;
+        color: $body-color;
+        border-radius: 3rem;
+    }
+
+    label {
+        font-size: $normal-font-size;
+    }
+
+    .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+        color: $first-color;
+    }
+    
+    .MuiOutlinedInput-root {
+        color: $body-color;
+    }
+
+    &.Mui-expanded.Mui-focused.MuiAutocomplete-hasClearIcon.css-1wuilmg-MuiAutocomplete-root > div > div {
+        border-radius: 3rem;
+    }
+
+    .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+        border-radius: 3rem;
+        &.Mui-focused .MuiOutlinedInput-notchedOutline {
+            border-color: $first-color;
+        }
+
+    }
+}
+
+
+.light__theme {
+
+}
