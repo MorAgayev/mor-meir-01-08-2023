@@ -41,7 +41,7 @@ export function AppHeader() {
     }
 
     const isFavorite = () => {
-        if (!favorites.length) return false
+        if (!favorites?.length) return false
         return favorites.some(favorite => favorite.Key === city?.Key) 
     }
 
