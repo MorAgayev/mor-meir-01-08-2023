@@ -1,21 +1,28 @@
 .select_temp_type {
-}
-.css-ece9u5 {
-    max-width: auto;
+    .css-ece9u5 {
+        max-width: inherit;
+    }
+    
+    .MuiFormControl-root {
+        background-color: $first-color;
+        border-radius: 4px;
+        
+    }
+    .MuiInputBase-root {
+        padding-inline-start: 1rem;
+    }
+    
+    .MuiNativeSelect-select {
+        font-size: .8rem !important;
+        font-family: inherit;
+        color: $body-color;
+        height: 100%;
+    }
 }
 
-.css-q8hpuo-MuiFormControl-root {
-    background-color: $first-color;
-    border-radius: 4px;
-}
-
-.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
-    font-size: .7rem;
-}
 
 .css-v4u5dn-MuiInputBase-root-MuiInput-root {
     font-family: inherit;
     font-size: $smaller-font-size;
     color: $body-color;
-    padding-inline-start: 1rem;
 }
