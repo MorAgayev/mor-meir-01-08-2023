@@ -43,17 +43,8 @@ $z-modal: 1000;
     $smaller-font-size: .813rem;
 }
 
-
-  /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  /*
-        Purple: hsl(250, 66%, 75%)
-        Blue: hsl(207, 90%, 72%)
-        Pink: hsl(356, 66%, 75%)
-        Teal: hsl(174, 63%, 62%)
-  */
-  // LIGHT THEME
-  $light-theme-title-color: hsl($second-hue, 15%, 15%);
-  $light-theme-text-color: hsl($second-hue, 8%, 35%);
-  $light-theme-body-color: hsl($second-hue, 100%, 99%);
-  $light-theme-container-color:#fff;
+// LIGHT THEME
+$light-theme-title-color: hsl($second-hue, 15%, 15%);
+$light-theme-text-color: hsl($second-hue, 8%, 35%);
+$light-theme-body-color: hsl($second-hue, 100%, 99%);
+$light-theme-container-color:#fff;

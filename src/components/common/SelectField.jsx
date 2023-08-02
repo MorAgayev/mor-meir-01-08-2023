@@ -4,9 +4,11 @@ import NativeSelect from '@mui/material/NativeSelect';
 import PropTypes from 'prop-types'
 
 export default function SelectField({options = [], defaultValue, select = ()=>{}}) {
+
   const handleChange = (e) => {
     select(e.target.value)
   }
+  
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>

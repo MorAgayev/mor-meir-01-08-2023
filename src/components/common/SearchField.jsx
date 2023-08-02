@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 export function SearchField({search, options = [], select, value}) {
+    
     const handleSelect = (_, newValue) => {
         select(newValue)
     }
@@ -26,7 +27,6 @@ export function SearchField({search, options = [], select, value}) {
                 return option.LocalizedName
             }}
             renderOption={(props, option) =>{
-                // eslint-disable-next-line react/prop-types
                 return <li {...props} key={props.id}>{option.LocalizedName}</li>
             }}
             sx={{ width: 300 }}

@@ -8,9 +8,11 @@ import { debounce, getDayFromDate, getAvg} from '../services/utils'
 import { MainModal } from "../components/common/MainModal"
 
 export function Weather() {
+
     const [options, setOptions] = useState([])
     const [error, setError] = useState(null)
     const [selectedCity, setSelectedCity] = useState(null)
+
     const dispatch = useDispatch()
     const { city, weatherType } = useSelector((state)=> state.weather)
 
@@ -43,6 +45,7 @@ export function Weather() {
 
     const handleSearch = (e) => {
         if (!e.target.value) return []
+        
         debounce(() => {
             loadCities(e.target.value)
         }, 1000);

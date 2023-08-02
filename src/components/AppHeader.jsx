@@ -11,14 +11,16 @@ import SelectField from "./common/SelectField";
 import { WEATHER_TYPES } from "../assets/consts";
 
 export function AppHeader() {
+
     const [isLightTheme, setIsLightTheme] = useState(false)
     const [isMobileMode, setIsMobileMode] = useState(false)
     const [isShowNav, setIsShowNav] = useState(true)
+
     const location = useLocation();
+
     const dispatch = useDispatch()
     const { city, favorites, weatherType } = useSelector((state)=> state.weather)
 
-    
     useEffect(() => {
         handleResize()
         window.addEventListener('resize', handleResize)
@@ -27,7 +29,6 @@ export function AppHeader() {
     useEffect(() => {
         setIsShowNav(!isMobileMode)
     }, [location, isMobileMode])
-
 
     function handleResize() {
         setIsMobileMode(window.innerWidth <= 575)
@@ -72,7 +73,7 @@ export function AppHeader() {
                         </ul>
                     }
             </nav>
-                <div className="logo">
+            <div className="logo">
                 <span>WeatherApp</span>
             </div>
             <div className="right">
