@@ -67,18 +67,19 @@
         }
         @media only screen and (max-width: 700px) {
           .favorite_card {
-            grid-column-end: span 10;
+            grid-column-end: span 8;
           }
         }
     }
 
     @media only screen and (max-width: 500px) {
-      .favorite_card {
-        grid-column: 2 / span 6;
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 20px;
+      .favorite_cards {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+ ;
         .favorite_card {
-          grid-column-end: span 6;
+          width: 100%;
         }
       }
     }  

@@ -45,7 +45,7 @@ export function Favorite() {
     return (
         <div className="favorite_section section">
             <div className="favorites-container container">
-                <h1>Favorite</h1>
+                <h1>Favorites</h1>
             <div className="favorite_cards">
                 {favorites?.length && favorites.map(favorite => {
                     return <div key={favorite.Key} className="favorite_card">
