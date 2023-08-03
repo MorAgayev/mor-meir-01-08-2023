@@ -20,9 +20,9 @@ export function Weather() {
         loadCity()
     },[selectedCity])
 
-    useEffect(()=> {
-        loadCities('')
-    },[])
+    // useEffect(()=> {
+    //     loadCities('')
+    // },[])
 
     async function loadCity() {
         try {
